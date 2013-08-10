@@ -1,7 +1,9 @@
 jq Cookbook
 ===========
 Install jq. 
+
 jq is a lightweight and flexible command-line JSON processor
+
 http://stedolan.github.io/jq/
 
 Requirements
