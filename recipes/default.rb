@@ -9,7 +9,7 @@
   end
 end
 
-git "/tmp/jq" do
+git "/var/cache/jq" do
   repository "git://github.com/stedolan/jq.git"
   reference "master"
   action :checkout
@@ -20,7 +20,7 @@ end
 
 # install
 execute "jq_make_install" do
-  cwd "/tmp/jq"
+  cwd "/var/cache/jq"
   command "autoreconf -i;./configure; make; make install"
-  action :run
+  action :nothing
 end
