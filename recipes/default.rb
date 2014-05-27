@@ -2,18 +2,14 @@
 # Cookbook Name:: jq
 # Recipe:: default
 #
-# Copyright 2013, YOUR_COMPANY_NAME
-#
-# All rights reserved - Do Not Redistribute
-#
 
-%w{bison flex}.each do |pkg|
+%w{bison flex libtool}.each do |pkg|
   package pkg do
     action :install
   end
 end
 
-git "/tmp/jq" do
+git "/var/cache/jq" do
   repository "git://github.com/stedolan/jq.git"
   reference "master"
   action :checkout
@@ -24,7 +20,7 @@ end
 
 # install
 execute "jq_make_install" do
-  cwd "/tmp/jq"
-  command "autoreconf;./configure; make; make install"
-  action :run
+  cwd "/var/cache/jq"
+  command "autoreconf -i;./configure; make; make install"
+  action :nothing
 end
